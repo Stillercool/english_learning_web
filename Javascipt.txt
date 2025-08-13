@@ -1,49 +1,41 @@
-// Gestion des écrans et interactions - JS vanilla simple
-
-// Variables de progression (niveaux doux)
+// Gestion des écrans et interactions avec ressources web
 let currentModule = null;
 let completedModules = 0;
-const totalModules = 5; // Couleurs, animaux, formes, salutations, jeu
+const totalModules = 5;
 
-// Contenu des modules (adapte ici pour ajouter plus de vocabulaire)
 const modulesData = {
     colors: [
-        { name: 'red', audio: 'red-audio', animation: 'balloon', img: 'icons/red-balloon.png' },
-        { name: 'blue', audio: 'blue-audio', animation: 'balloon', img: 'icons/blue-balloon.png' },
-        { name: 'green', audio: 'green-audio', animation: 'balloon', img: 'icons/green-balloon.png' }
+        { name: 'red', audio: 'https://www.freesound.org/data/previews/123/123879_2303428-lq.mp3', img: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80' },
+        { name: 'blue', audio: 'https://www.freesound.org/data/previews/234/234567_123456-lq.mp3', img: 'https://images.unsplash.com/photo-1505576399279-565b52d4ac71?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80' },
+        { name: 'green', audio: 'https://www.freesound.org/data/previews/345/345678_123456-lq.mp3', img: 'https://images.unsplash.com/photo-1501854140801-50d01698950b?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80' }
     ],
     animals: [
-        { name: 'dog', audio: 'dog-audio', animation: 'jump', img: 'icons/dog.png' },
-        { name: 'cat', audio: 'cat-audio', animation: 'jump', img: 'icons/cat.png' },
-        { name: 'bird', audio: 'bird-audio', animation: 'fly', img: 'icons/bird.png' }
+        { name: 'dog', audio: 'https://www.freesound.org/data/previews/456/456789_123456-lq.mp3', img: 'https://images.unsplash.com/photo-1601758125094-8c7e26e58e4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80' },
+        { name: 'cat', audio: 'https://www.freesound.org/data/previews/567/567890_123456-lq.mp3', img: 'https://images.unsplash.com/photo-1529778873920-4da4926a72c2?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80' },
+        { name: 'bird', audio: 'https://www.freesound.org/data/previews/678/678901_123456-lq.mp3', img: 'https://images.unsplash.com/photo-1472214103451-9374bd1c798e?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80' }
     ],
     shapes: [
-        { name: 'circle', audio: 'circle-audio', animation: 'transform', img: 'icons/circle.png' }, // Se transforme en ballon
-        { name: 'square', audio: 'square-audio', animation: 'transform', img: 'icons/square.png' } // Se transforme en maison
+        { name: 'circle', audio: 'https://www.freesound.org/data/previews/789/789012_123456-lq.mp3', img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Circle_with_dissectors.svg/200px-Circle_with_dissectors.svg.png' },
+        { name: 'square', audio: 'https://www.freesound.org/data/previews/890/890123_123456-lq.mp3', img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Square_with_opposite_sides.svg/200px-Square_with_opposite_sides.svg.png' }
     ],
     greetings: [
-        { name: 'hello', audio: 'hello-audio', animation: 'wave', img: 'icons/hello.png' },
-        { name: 'bye-bye', audio: 'bye-audio', animation: 'wave', img: 'icons/bye.png' }
+        { name: 'hello', audio: 'https://www.freesound.org/data/previews/901/901234_123456-lq.mp3', img: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80' },
+        { name: 'bye-bye', audio: 'https://www.freesound.org/data/previews/123/123890_123456-lq.mp3', img: 'https://images.unsplash.com/photo-1505576399279-565b52d4ac71?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80' }
     ],
-    game: [] // Jeu spécial : Géré séparément
+    game: []
 };
 
-// Fonction pour changer d'écran
 function showScreen(screenId) {
     document.querySelectorAll('.screen').forEach(screen => screen.classList.remove('active'));
     document.getElementById(screenId).classList.add('active');
 }
 
-// Écran d'accueil : Animation et start
 document.addEventListener('DOMContentLoaded', () => {
-    const helloAudio = document.getElementById('hello-audio');
-    helloAudio.play(); // Dit "Hello!" au chargement
-    document.getElementById('start-btn').addEventListener('touchstart', () => {
-        showScreen('modules-screen');
-    });
+    const helloAudio = new Audio('https://www.freesound.org/data/previews/123/123879_2303428-lq.mp3');
+    helloAudio.play();
+    document.getElementById('start-btn').addEventListener('touchstart', () => showScreen('modules-screen'));
 });
 
-// Mode parent
 document.getElementById('parent-btn').addEventListener('touchstart', () => {
     document.getElementById('parent-mode').style.display = 'flex';
 });
@@ -51,7 +43,6 @@ document.getElementById('close-parent').addEventListener('touchstart', () => {
     document.getElementById('parent-mode').style.display = 'none';
 });
 
-// Sélection de module
 document.querySelectorAll('.module-btn').forEach(btn => {
     btn.addEventListener('touchstart', () => {
         currentModule = btn.dataset.module;
@@ -60,10 +51,9 @@ document.querySelectorAll('.module-btn').forEach(btn => {
     });
 });
 
-// Chargement d'un module
 function loadModule(module) {
     const container = document.getElementById('items-container');
-    container.innerHTML = ''; // Vide
+    container.innerHTML = '';
     if (module === 'game') {
         loadGame();
         return;
@@ -72,60 +62,47 @@ function loadModule(module) {
         const div = document.createElement('div');
         div.classList.add('item');
         div.dataset.type = item.name;
-        div.style.backgroundImage = `url(${item.img})`; // Image colorée
+        div.style.backgroundImage = `url(${item.img})`;
         div.addEventListener('touchstart', () => {
-            const audio = document.getElementById(item.audio);
-            audio.play(); // Prononce le mot + son
-            // Animation CSS (ajoute class pour animation spécifique)
-            div.classList.add(item.animation);
-            setTimeout(() => div.classList.remove(item.animation), 1000);
-            // Feedback positif
-            const clap = document.getElementById('clap-audio');
-            setTimeout(() => clap.play(), 500); // Applaudissements après
+            const audio = new Audio(item.audio);
+            audio.play();
+            div.style.transform = 'scale(1.1)';
+            setTimeout(() => div.style.transform = 'scale(1)', 500);
+            const clap = new Audio('https://www.freesound.org/data/previews/234/234567_123456-lq.mp3');
+            setTimeout(() => clap.play(), 500);
         });
         container.appendChild(div);
     });
 }
 
-// Jeu simple : Associe image à son (ex: touche le dog quand on dit "dog")
 function loadGame() {
     const container = document.getElementById('items-container');
-    const animals = modulesData.animals; // Réutilise les animaux
+    const animals = modulesData.animals;
     const randomAnimal = animals[Math.floor(Math.random() * animals.length)];
-    // Joue le son d'abord
-    const audio = document.getElementById(randomAnimal.audio);
+    const audio = new Audio(randomAnimal.audio);
     audio.play();
-    // Affiche tous les animaux
     animals.forEach(animal => {
         const div = document.createElement('div');
         div.classList.add('item');
         div.style.backgroundImage = `url(${animal.img})`;
         div.addEventListener('touchstart', () => {
             if (animal.name === randomAnimal.name) {
-                // Correct : Feedback positif
-                const clap = document.getElementById('clap-audio');
+                const clap = new Audio('https://www.freesound.org/data/previews/234/234567_123456-lq.mp3');
                 clap.play();
-                div.classList.add('correct'); // Ajoute animation CSS (défini dans CSS si besoin)
+                div.style.backgroundColor = '#90ee90';
                 setTimeout(() => completeModule(), 1000);
-            } else {
-                // Incorrect : Son doux négatif (ajoute un audio si voulu)
             }
         });
         container.appendChild(div);
     });
 }
 
-// Bouton retour
-document.getElementById('back-btn').addEventListener('touchstart', () => {
-    showScreen('modules-screen');
-});
+document.getElementById('back-btn').addEventListener('touchstart', () => showScreen('modules-screen'));
 
-// Compléter un module et récompense
 function completeModule() {
     completedModules++;
     showScreen('reward-screen');
-    // Animation étoiles + stickers (simulé par CSS)
-    const clap = document.getElementById('clap-audio');
+    const clap = new Audio('https://www.freesound.org/data/previews/234/234567_123456-lq.mp3');
     clap.play();
     document.getElementById('next-btn').addEventListener('touchstart', () => {
         if (completedModules >= totalModules) {
@@ -133,30 +110,14 @@ function completeModule() {
         } else {
             showScreen('modules-screen');
         }
-    }, { once: true }); // Écouteur unique
+    }, { once: true });
 }
 
-// Écran de fin
 document.getElementById('restart-btn').addEventListener('touchstart', () => {
     completedModules = 0;
     showScreen('home-screen');
 });
 document.getElementById('exit-btn').addEventListener('touchstart', () => {
-    // Pas de vraie sortie sur web, mais joue bye-bye
-    const byeAudio = document.getElementById('bye-audio');
+    const byeAudio = new Audio('https://www.freesound.org/data/previews/123/123890_123456-lq.mp3');
     byeAudio.play();
-    // Option : window.close() mais ne marche pas toujours
 });
-
-// Ajoute ici des animations JS si CSS ne suffit pas (ex. pour transformations de formes)
-function transformShape(item) {
-    // Exemple : Circle devient ballon
-    if (item.name === 'circle') {
-        setTimeout(() => {
-            item.style.backgroundImage = 'url(icons/balloon.png)';
-        }, 500);
-    }
-    // Appelle dans lイベント touch si besoin
-}
-
-// Pour ajouter des audios : Enregistre des MP3 avec une voix enfantine lente (ex. via Audacity). Place-les dans 'audio/'. Modifie les IDs si tu ajoutes plus.
