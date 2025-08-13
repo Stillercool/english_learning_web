@@ -1,83 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <!-- Meta tags pour fullscreen sur iPad et add to homescreen -->
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="apple-mobile-web-app-title" content="English Fun">
-    <title>English Fun for Kids</title>
-    <link rel="stylesheet" href="styles.css">
-    <!-- Icône pour l'écran d'accueil (tu peux ajouter une image 180x180 png nommée icon.png) -->
-    <link rel="apple-touch-icon" href="icon.png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>English for Kids</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Écran d'accueil -->
-    <div id="home-screen" class="screen active">
-        <div class="sun"></div> <!-- Animation de soleil souriant -->
-        <button id="start-btn" class="icon-btn"></button> <!-- Icône de start, touche pour commencer -->
-    </div>
-
-    <!-- Mode p arent (instructions en franais) -->
-    <div id="parent-mode" class="overlay">
-        <div class="parent-content">
-            <h2>Mode Parent</h2>
-            <p>Bonjour ! Cette app aide votre enfant à apprendre l'anglais de base.</p>
-            <ul>
-                <li>Touchez les éléments pour entendre les mots en anglais clair et lent.</li>
-                <li>Sections : Couleurs, Animaux, Formes, Salutations, et un petit jeu.</li>
-                <li>Récompenses : Stickers virtuels après chaque module.</li>
-                <li>Ajoutez des audios dans le dossier 'audio' (ex. red.mp3).</li>
-                <li>Pour quitter : Touchez le bouton en haut à droite.</li>
-            </ul>
-            <button id="close-parent">Fermer</button>
-        </div>
-    </div>
-    <button id="parent-btn" class="parent-icon">?</button> <!-- Bouton discret pour mode parent -->
-
-    <!-- Modules interactifs -->
-    <div id="modules-screen" class="screen">
-        <div class="module-btn" data-module="colors"></div> <!-- Icône couleurs -->
-        <div class="module-btn" data-module="animals"></div> <!-- Icône animaux -->
-        <div class="module-btn" data-module="shapes"></div> <!-- Icône formes -->
-        <div class="module-btn" data-module="greetings"></div> <!-- Icône salutations -->
-        <div class="module-btn" data-module="game"></div> <!-- Icône jeu -->
-    </div>
-
-    <!-- Écran de module générique (sera rempli par JS) -->
-    <div id="module-content" class="screen">
-        <div id="items-container"></div>
-        <button id="back-btn" class="icon-btn back"></button> <!-- Icône retour -->
-    </div>
-
-    <!-- Écran de récompense -->
-    <div id="reward-screen" class="screen">
-        <div class="stars"></div> <!-- Animation d'étoiles scintillantes -->
-        <button id="next-btn" class="icon-btn next"></button> <!-- Icône suivant -->
-    </div>
-
-    <!-- Écran de fin -->
-    <div id="end-screen" class="screen">
-        <div class="bye-animation"></div> <!-- Animation bye-bye -->
-        <button id="restart-btn" class="icon-btn restart"></button> <!-- Icône recommencer -->
-        <button id="exit-btn" class="icon-btn exit"></button> <!-- Icône quitter (ferme l'app) -->
-    </div>
-
-    <!-- Audios embarqués (placeholders - remplace src par tes fichiers MP3) -->
-    <audio id="hello-audio" src="audio/hello.mp3"></audio> <!-- Voix : "Hello!" lent -->
-    <audio id="bye-audio" src="audio/bye-bye.mp3"></audio> <!-- Voix : "Bye-bye!" -->
-    <audio id="red-audio" src="audio/red.mp3"></audio> <!-- Voix : "Red" -->
-    <audio id="blue-audio" src="audio/blue.mp3"></audio> <!-- Voix : "Blue" -->
-    <audio id="green-audio" src="audio/green.mp3"></audio> <!-- Voix : "Green" -->
-    <audio id="dog-audio" src="audio/dog.mp3"></audio> <!-- Voix : "Dog" + aboiement -->
-    <audio id="cat-audio" src="audio/cat.mp3"></audio> <!-- Voix : "Cat" + miaulement -->
-    <audio id="bird-audio" src="audio/bird.mp3"></audio> <!-- Voix : "Bird" + chant -->
-    <audio id="circle-audio" src="audio/circle.mp3"></audio> <!-- Voix : "Circle" -->
-    <audio id="square-audio" src="audio/square.mp3"></audio> <!-- Voix : "Square" -->
-    <audio id="clap-audio" src="audio/clap.mp3"></audio> <!-- Applaudissements pour feedback -->
-    <!-- Ajoute plus d'audios si tu étends l'app -->
-
-    <script src="script.js"></script>
+  <div class="container">
+    <img src="assets/cat.png" alt="Cat" class="image">
+    <h1>Cat</h1>
+    <button onclick="playSound('assets/cat.mp3')">Listen</button>
+  </div>
+  <script src="script.js"></script>
 </body>
 </html>

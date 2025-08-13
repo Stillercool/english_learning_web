@@ -1,156 +1,29 @@
-/* Styles de base : Colorés, simples, optimisés pour tactile */
 body {
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #f0f8ff; /* Bleu clair joyeux */
-    font-family: sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f0f0f0;
+  margin: 0;
 }
-
-/* Responsive pour iPad : Portrait et landscape */
-@media (orientation: portrait) {
-    body { flex-direction: column; }
+.container {
+  text-align: center;
 }
-@media (orientation: landscape) {
-    body { flex-direction: row; }
+.image {
+  width: 200px;
+  height: 200px;
 }
-
-.screen {
-    display: none;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    width: 100%;
+h1 {
+  font-size: 40px;
+  color: blue;
+  font-family: Arial, sans-serif;
 }
-.screen.active { display: flex; }
-
-/* Écran d'accueil */
-#home-screen .sun {
-    width: 200px;
-    height: 200px;
-    background: yellow;
-    border-radius: 50%;
-    animation: smile 2s infinite; /* Animation joyeuse */
+button {
+  font-size: 30px;
+  padding: 20px;
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
 }
-@keyframes smile {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.1); }
-    100% { transform: scale(1); }
-}
-#start-btn {
-    background: url('icons/start.png'); /* Placeholder icône - remplace par une image PNG */
-    width: 100px;
-    height: 100px;
-    border: none;
-    cursor: pointer;
-}
-
-/* Mode parent */
-#parent-mode {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.5);
-    justify-content: center;
-    align-items: center;
-}
-.parent-content {
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
-}
-#parent-btn {
-    position: fixed;
-    top: 10px;
-    right: 10px;
-    background: #ccc;
-    border: none;
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    font-size: 20px;
-    cursor: pointer;
-}
-
-/* Modules */
-.module-btn {
-    width: 150px;
-    height: 150px;
-    margin: 20px;
-    background-size: cover;
-    cursor: pointer;
-}
-.module-btn[data-module="colors"] { background: url('icons/colors.png'); } /* Placeholder icône */
-.module-btn[data-module="animals"] { background: url('icons/animals.png'); }
-.module-btn[data-module="shapes"] { background: url('icons/shapes.png'); }
-.module-btn[data-module="greetings"] { background: url('icons/greetings.png'); }
-.module-btn[data-module="game"] { background: url('icons/game.png'); }
-
-/* Contenu module */
-#items-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-.item {
-    width: 200px;
-    height: 200px;
-    margin: 20px;
-    background-size: cover;
-    cursor: pointer;
-    transition: transform 0.3s;
-}
-.item:hover { transform: scale(1.1); } /* Feedback tactile */
-
-/* Animations spécifiques */
-.item[data-type="red"] { background: red; animation: balloon 1s; } /* Ex: ballon qui gonfle */
-@keyframes balloon {
-    0% { transform: scale(0.5); }
-    100% { transform: scale(1); }
-}
-/* Ajoute des animations similaires pour d'autres items dans le code JS */
-
-/* Récompense */
-#reward-screen .stars {
-    width: 100%;
-    height: 100%;
-    background: url('icons/stars.gif'); /* GIF d'étoiles scintillantes */
-    animation: sparkle 2s infinite;
-}
-@keyframes sparkle {
-    0% { opacity: 0.5; }
-    50% { opacity: 1; }
-    100% { opacity: 0.5; }
-}
-
-/* Écran de fin */
-#end-screen .bye-animation {
-    width: 200px;
-    height: 200px;
-    background: url('icons/bye.png'); /* Animation bye-bye */
-}
-
-/* Boutons icônes */
-.icon-btn {
-    background: transparent;
-    border: none;
-    width: 80px;
-    height: 80px;
-    cursor: pointer;
-}
-.back { background: url('icons/back.png'); }
-.next { background: url('icons/next.png'); }
-.restart { background: url('icons/restart.png'); }
-.exit { background: url('icons/exit.png'); }
-
-/* Pour les placeholders icônes : Crée un dossier 'icons' et ajoute des PNG simples (ex. soleil, couleurs). Tu peux utiliser des outils comme Canva pour les créer. */
