@@ -1,4 +1,16 @@
-function playSound(file) {
-  const audio = new Audio(file);
+const words = [
+  { image: 'assets/cat.png', text: 'Cat', sound: 'assets/cat.mp3' },
+  { image: 'assets/dog.png', text: 'Dog', sound: 'assets/dog.mp3' }
+];
+let currentIndex = 0;
+
+function playSound() {
+  const audio = new Audio(words[currentIndex].sound);
   audio.play();
+}
+
+function nextWord() {
+  currentIndex = (currentIndex + 1) % words.length;
+  document.getElementById('wordImage').src = words[currentIndex].image;
+  document.getElementById('wordText').textContent = words[currentIndex].text;
 }
